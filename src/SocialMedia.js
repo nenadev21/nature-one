@@ -68,7 +68,7 @@ export default function SocialMedia() {
           <FaGithub />
           <a
             className="social-media-link"
-            href="https://github.com/nenadev21/outside-is-beautiful"
+            href="https://github.com/nenadev21/nature-one"
                       target="_blank"
                       rel="noreferrer"
           >

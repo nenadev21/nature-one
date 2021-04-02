@@ -2,7 +2,6 @@ import React from "react";
 import "./ForecastByTime.css";
 
 export default function ForecastByTime() {
-  let forecast = null; // this is to clean up the document with each search 
   let ForecastByTimeData = {
     time: "12:00",
     tempMin: 15.3,
@@ -10,9 +9,7 @@ export default function ForecastByTime() {
     icon: "http://openweathermap.org/img/wn/10d@2x.png"
   };
   return (
-  // for (let index = 0; index > 5; index++) {
-  
-  //   forecast = response.data.list[index];
+
 
     <div className="ForecastByTime" >
       <div className="col-sm outsideCard">
