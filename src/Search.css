@@ -1,0 +1,19 @@
+.Search {
+  margin-top: 20px;
+}
+
+.Search .location {
+  background-color: #30cfd0;
+  margin-left: -10px;
+  border: none;
+}
+
+/* .Search .search-wrapper {
+  text-align: center;
+  margin-left: -16px;
+  margin-top: 10px;
+} */
+
+/* .Search .area-wrapper{
+  margin: 2px;
+} */

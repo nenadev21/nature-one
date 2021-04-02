@@ -1,0 +1,23 @@
+.SocialMedia {
+  font-size: medium;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: small;
+  color: rgba(39, 33, 66, 0.7);
+}
+
+.SocialMedia .social-media-link {
+  color: rgba(39, 33, 66, 0.7);
+  text-decoration: none;
+}
+
+.SocialMedia li {
+  display: inline-block;
+  padding: 8px;
+}
+
+.SocialMedia .social-media-link:hover {
+  text-decoration: underline;
+  color: #482c6b;
+}

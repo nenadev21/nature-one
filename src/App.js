@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Search from "./Search";
+import CityAndCountry from "./CityAndCountry";
+import DayAndTime from "./DayAndTime";
+import DateAndYear from "./DateAndYear";
+import WeatherToday from "./WeatherToday";
+import Conditions from "./Conditions";
+import ForecastSection from "./ForecastSection";
+import Footer from "./Footer";
+
+
+
 
 function App() {
-  return (
+return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="weather-app-wrapper">
+     
+        <Search />
+        <CityAndCountry />
+        <div className="row">
+          <div className="col-6">
+            <DayAndTime />
+            <DateAndYear />
+          </div>
+          <div className="col-6">
+            <WeatherToday />
+          </div>
+        </div>
+
+        <Conditions />
+        <ForecastSection />
+        <Footer />
+      </div>
     </div>
   );
 }
