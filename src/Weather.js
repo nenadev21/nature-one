@@ -1,17 +1,37 @@
 
 import React, { useState } from "react";
+import WeatherData from "./WeatherData";
 import "./Weather.css";
 import axios from "axios";
-import WeatherDescription from "./WeatherDescription";
 
+export default function Weather({ defaultCity }) {
 
+  const [city, setCity] = useState(defaultCity); //city is first set with the default value at least updated
+  const [weatherData, setWeatherData] = useState({ready: false}); //weatherData is set as an empty object in the beginning
 
-export default function Weather({defaultCity}) {
-  const [weatherData, setWeatherData] = useState({ready:false}); //weatherData is set as an empty object in the beginning
+  function search() {
+    const unit = `metric`;
+    const apiKey = `173ed25e9ec2ac3422ba210874fee46d`; 
+    const apiEndPointWeather = `https://api.openweathermap.org/data/2.5/weather`;
+    const apiUrlWeather = `${apiEndPointWeather}?q=${city}&appid=${apiKey}&units=${unit}`;
   
+    axios.get(apiUrlWeather).then(handleResponse);
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+    
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value); //this is the route from where the updated value is taken
+  }
+
 
   function handleResponse(response) {
-    console.log(response.data)
+    console.log(response.data);
+    
     
     setWeatherData({
       ready: true,
@@ -22,22 +42,24 @@ export default function Weather({defaultCity}) {
       description: response.data.weather[0].description,
       country: response.data.sys.country,
       humidity: response.data.main.humidity,
-      iconUrl: "https://openweathermap.org/img/wn/10d@2x.png"
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      date: new Date(response.data.dt * 1000)
 
     })
   }
 
-  if (weatherData.ready) {
+  if (weatherData.ready) { //this is what is returned once the search function have found a default city or a submitted city
     
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-6">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Enter a city"
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-3">
@@ -59,57 +81,12 @@ export default function Weather({defaultCity}) {
          
           </div>
         </form>
-        <h4>
-          {weatherData.city}, {weatherData.country}
-        </h4>
-        <div className="row">
-          <div className="col-6">
-            <div>
-              April 4th, 2021
-            </div>
-            <div>
-              Monday, 7:38 PM
-            </div>
-        
-          </div>
-      
-          <div className="col-6">
-      
-            <div className="CurrentTemperature">
-              <img className="icon" src={weatherData.iconUrl} alt="clear" />
-              <span> {Math.floor(weatherData.temperature)} </span>
-            </div>
-            <WeatherDescription description={weatherData.description} />
-            {/* this data gets passed to the child component and comes from response */}
-          </div>
-        </div>
-        <div className="Conditions">
-          <ul>
-            <li>
-              {" "}
-              <strong>Humidity: </strong>
-              {Math.round(weatherData.humidity)}&#x0025;
-        </li>
-            <li>
-              <strong>Wind: </strong>
-              {Math.round(weatherData.wind)} mph{" "}
-            </li>
-            <li>
-              <strong>Feels like: </strong>
-              {Math.round(weatherData.feelsLike)}&deg;
-        </li>
-          </ul>
-        </div>
+        <WeatherData data={weatherData} />
       </div>
     );
   } else {
 
-    const unit = `metric`;
-    const apiKey = `271356899704dafebcd929dfba41015b`;
-    const apiEndPointWeather = `https://api.openweathermap.org/data/2.5/weather`;
-    const apiUrlWeather = `${apiEndPointWeather}?q=${defaultCity}&appid=${apiKey}&units=${unit}`;
-  
-    axios.get(apiUrlWeather).then(handleResponse);
+    search();
     return `Loading...`
   }
 }
