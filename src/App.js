@@ -11,7 +11,7 @@ return (
   <div className="App">
     <div className="container">
     <div className="weather-app-wrapper">
-      <Weather defaultCity="Lima"/>
+      <Weather defaultCity="Valencia"/>
         <ForecastSection />
         <Footer />
       </div>
