@@ -1,11 +1,11 @@
 .SocialMedia {
   font-size: medium;
-  display: inline-block;
   margin: 0 auto;
-  text-align: center;
   font-size: small;
   color: rgba(39, 33, 66, 0.7);
+  text-align: center;
 }
+
 
 .SocialMedia .social-media-link {
   color: rgba(39, 33, 66, 0.7);

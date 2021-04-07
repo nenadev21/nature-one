@@ -1,0 +1,51 @@
+.Weather {
+  margin-top: 20px;
+}
+
+.Weather h4{
+  font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: rgba(39, 33, 66, 0.9);
+  text-align: left;
+  margin-top: 15px;
+}
+
+.Weather span {
+  font-size: 48px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: rgba(39, 33, 66, 0.9);
+}
+
+
+.Weather .location {
+  background-color: #30cfd0;
+  margin-left: -20px;
+  border: none;
+}
+
+.Weather .icon {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  left: 16px;
+  bottom: 4px;
+}
+
+.Weather .CurrentTemperature {
+  font-weight: 900;
+  color: black;
+  font-size: 40px;
+}
+
+.Weather .Conditions li {
+  display: inline-block;
+  margin: 10px;
+  color: rgba(39, 33, 66, 0.7);
+  
+}
+
+.Conditions ul {
+  text-align: center;
+}

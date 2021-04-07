@@ -1,14 +1,12 @@
 import React from "react";
 import "./WeatherDescription.css";
 
-export default function WeatherDescription() {
-  let WeatherDescriptionData = {
-    description: "Clear"
-  };
+export default function WeatherDescription({description}) {
+  
 
   return (
     <div className="WeatherDescription">
-      <p>{WeatherDescriptionData.description}</p>
+      <p>{description}</p>
     </div>
   );
 }

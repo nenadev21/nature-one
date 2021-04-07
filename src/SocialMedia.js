@@ -1,6 +1,6 @@
 import React from "react";
-import "./SocialMedia.css";
 import { FaLinkedin, FaEnvelope, FaTwitter, FaFacebook, FaGithub } from 'react-icons/fa';
+import "./SocialMedia.css";
 
 
 

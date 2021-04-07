@@ -1,14 +1,19 @@
 import React from "react";
 import "./CityAndCountry.css";
 
-export default function CityAndCountry() {
-  let CityAndCountryData = {
-    city: "Attleboro",
-    country: "US"
-  };
+export default function CityAndCountry({city, defaultCity}) {
+  let country = "USA";
+  if (city) {
+
+  
   return (
     <h4 className="CityAndCountry">
-      {CityAndCountryData.city}, {CityAndCountryData.country}
+      {city}, {country}
     </h4>
-  );
+    );
+  } else {
+    <h4 className="CityAndCountry">
+      {defaultCity}, {country}
+    </h4>
+  }
 }
