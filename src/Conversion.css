@@ -1,6 +1,23 @@
-.Conversion {
+.Conversion a {
   position: relative;
-  bottom: 60px;
-  right: -140px;
-  font-size: 12px;
+  bottom: 80px;
+  right: -60px;
+  font-size: 10px;
+  color: black;
+   padding: 2px 5px;
+  background-color: #b490ca;
+  border-radius: 50px;
+  margin: 1px;
+
 }
+
+
+.Conversion {
+  text-align: left;
+}
+
+.Conversion .Description {
+  font-style: italic;
+  font-size: small;
+}
+
