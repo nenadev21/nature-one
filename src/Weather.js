@@ -65,7 +65,7 @@ export default function Weather({ defaultCity }) {
             </div>
             <div className="col-3">
               <button
-                className="btn btn-success"
+                className="btn btn-dark"
                 type="submit"
               >
                 Search
