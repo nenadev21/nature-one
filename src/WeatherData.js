@@ -1,7 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
-import Conversion from "./Conversion";
+import Conditions from "./Conditions";
 import "./WeatherData.css";
 
 
@@ -9,48 +9,31 @@ import "./WeatherData.css";
 export default function WeatherData({ data }) {
     return (
         <div className="WeatherData">
-
-
-
             <h4>
                 {data.city}, {data.country}
             </h4>
 
 
-
-
             <div className="row">
 
 
-                <div className="col-6 WeatherInfo">
-                    <div>
+                <div className="col-3">
                         <FormattedDate date={data.date} />
-                    </div>
-                    <div>
-                        April, 2021
-                    </div>
                 </div>
 
-      
-                <div className="col-6 WeatherDataCol">
-
-                    <div className="row">
-                        <div className="col-6 WeatherDataCol">
-                            <WeatherIcon code={data.icon} />
-                            </div>
-                        <div className="col-6 WeatherDataCol">
-                            <Conversion celsius={data.temperature} description={data.description} />
-                        </div>
+                <div className="col-5 Now">
+                       <WeatherIcon code={data.icon} color="#363053" size={40} /> 
                         
-
-                    </div>
-
-                        
-
+                        <div className="Current-Temp"> {Math.round(data.temperature)}&#176; C </div>
+                        <div className="Description"> {data.description} </div>
                 </div>
-
                 
+                <div className="col-4">
+                        <Conditions data={data} />
+                </div>
+           
             </div>
-            </div>
+            
+        </div>
     );
 }

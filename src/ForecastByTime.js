@@ -1,38 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ForecastByTime.css";
+import ForecastDay from "./ForecastDay";
+import axios from "axios";
 
-export default function ForecastByTime() {
-  let ForecastByTimeData = {
-    time: "12:00",
-    tempMin: 15.3,
-    tempMax: 17.9,
-    icon: "http://openweathermap.org/img/wn/10d@2x.png"
-  };
-  return (
+export default function ForecastByTime({ coordinates }) {
+
+  const [ready, setReady] = useState(false);
+  const [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setReady(false);
+  }, [coordinates]);
 
 
-    <div className="ForecastByTime" >
-      <div className="col-sm outsideCard">
-        <div className="card text-center externalCard">
-          <div className="card-body bg-transparent insideCard">
-            <h5 className="card-title"> {ForecastByTimeData.time} </h5>
-            <img src={ForecastByTimeData.icon} alt="clear" />
+  function handleResponse(response) {
+    setForecast(response.data.daily);
+    setReady(true);
+  }
 
-            <div className="row">
-              <div className="col">
-                <h5 className="card-title p-1">
-                  {Math.round(ForecastByTimeData.tempMin)}°
-              </h5>
-              </div>
-              <div className="col">
-                <h5 className="card-title p-1">
-                  {Math.round(ForecastByTimeData.tempMax)}°
-              </h5>
-              </div>
-            </div>
-          </div>
+
+
+
+  if (ready) {
+    return (
+      <div className="ForecastByTime" >
+        <div className="row">
+        
+          {forecast.map(function (dailyForecast, index) {
+            if (index < 5) {
+              return (
+                <div className="col-sm outsideCard" key={index}>
+                  <div className="card text-center externalCard">
+                    <div className="card-body bg-transparent insideCard">
+                
+                      <ForecastDay data={dailyForecast} />
+                          
+                    </div>
+                  </div>
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
-    </div>
-  );
+    );
+
+  } else {
+
+    const lat = coordinates.lat;
+    const lon = coordinates.lon;
+    const apiKey = `94bcf4525ee36710c20e6e22fa4bdc5e`;
+    const apiEndPointForecast = `https://api.openweathermap.org/data/2.5/onecall`;
+    const apiUrlForecast = `${apiEndPointForecast}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  
+    axios.get(apiUrlForecast).then(handleResponse);
+    return null;
+  } 
+    
 }
+
+

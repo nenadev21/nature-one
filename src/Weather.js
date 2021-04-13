@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import WeatherData from "./WeatherData";
-import Conditions from "./Conditions";
+import ForecastByTime from "./ForecastByTime";
 import "./Weather.css";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ export default function Weather({ defaultCity }) {
 
   function search() {
     const unit = `metric`;
-    const apiKey = `173ed25e9ec2ac3422ba210874fee46d`; 
+    const apiKey = `94bcf4525ee36710c20e6e22fa4bdc5e`; 
     const apiEndPointWeather = `https://api.openweathermap.org/data/2.5/weather`;
     const apiUrlWeather = `${apiEndPointWeather}?q=${city}&appid=${apiKey}&units=${unit}`;
   
@@ -44,8 +44,8 @@ export default function Weather({ defaultCity }) {
       country: response.data.sys.country,
       humidity: response.data.main.humidity,
       icon: response.data.weather[0].icon,
-      date: new Date(response.data.dt * 1000)
-
+      date: new Date(response.data.dt * 1000),
+      coordinates: response.data.coord
     })
   }
 
@@ -55,7 +55,7 @@ export default function Weather({ defaultCity }) {
       <div className="Weather">
         <form onSubmit={handleSubmit}>
           <div className="row">
-            <div className="col-6">
+            <div className="col-8">
               <input
                 type="text"
                 className="form-control"
@@ -71,19 +71,11 @@ export default function Weather({ defaultCity }) {
                 Search
               </button>
             </div>
-            <div class="col-3">
-              <button
-                className="btn btn-info location"
-                type="submit"
-              >
-                Location
-              </button>
-            </div>
-         
           </div>
         </form>
         <WeatherData data={weatherData} />
-        <Conditions data={weatherData}/>
+        <ForecastByTime coordinates={weatherData.coordinates} />
+        
       </div>
     );
   } else {

@@ -5,7 +5,7 @@
 
 .weather-app-wrapper {
   background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
-  border: 1px solid #482c6b;
+  border: 1px solid #DADCE0;
   border-radius: 35px;
   max-width: 600px;
   margin: 30px auto;

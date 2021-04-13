@@ -23,7 +23,7 @@ export default function Conditions() {
           <strong>Feels like: </strong>
           {Math.round(ConditionsData.feelsLike)}&deg;
         </li>
-      </ul>
+        </ul>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import "./App.css";
 import Weather from "./Weather";
-import ForecastSection from "./ForecastSection";
+
 import Footer from "./Footer";
 
 
@@ -12,7 +12,6 @@ return (
     <div className="container">
     <div className="weather-app-wrapper">
       <Weather defaultCity="Barcelona"/>
-        <ForecastSection />
         <Footer />
       </div>
     </div>

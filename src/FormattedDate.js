@@ -1,4 +1,5 @@
 import React from "react";
+import "./FormattedDate.css";
 
 
 export default function FormattedDate({ date }) {
@@ -18,9 +19,35 @@ export default function FormattedDate({ date }) {
     } else {
         meridian = `PM`;
     }
+
+    let monthsIndex = [
+    `January`,
+    `February`,
+    `March`,
+    `April`,
+    `May`,
+    `June`,
+    `July`,
+    `August`,
+    `September`,
+    `October`,
+    `November`,
+    `December`
+  ];
+  let month = monthsIndex[date.getMonth()];
+  let yy = date.getFullYear();
+  let fecha = date.getDate();
     
 
 
-    return <div className="FormattedDate"> {day}, {hours}:{minutes} {meridian} 
-    </div>;
+    return (
+        <ul className="FormattedDate">
+            <li>
+                {day}, {hours}:{minutes} {meridian}
+            </li>
+            <li>
+                { month } { fecha}, {yy}
+            </li>
+    </ul >
+    );
 }

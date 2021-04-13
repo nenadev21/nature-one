@@ -1,10 +1,6 @@
 .Conditions li {
   display: inline-block;
-  margin: 10px;
   color: rgba(39, 33, 66, 0.7);
-  
+  font-size: 12px;
 }
 
-.Conditions ul {
-  text-align: center;
-}
